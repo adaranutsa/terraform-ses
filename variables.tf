@@ -12,3 +12,13 @@ variable "dkim_records" {
   type        = "map"
   default     = {}
 }
+
+variable "dkim_ttl" {
+  description = "TTL for DKIM records. Default is 300 seconds"
+  default = "300"
+}
+
+variable "ses_ttl" {
+  description = "TTL for SES Verification record. Default is 300 seconds"
+  default = "300"
+}
