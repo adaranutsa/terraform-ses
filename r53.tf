@@ -12,6 +12,6 @@ resource "aws_route53_record" "domain_amazonses_dkim_record" {
   zone_id = "${var.zone_id}"
   name    = "${element(keys(var.dkim_records), count.index)}"
   type    = "CNAME"
-  ttl     = "3600"
+  ttl     = "300"
   records = ["${element(values(var.dkim_records), count.index)}"]
 }
