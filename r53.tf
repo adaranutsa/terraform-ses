@@ -3,7 +3,7 @@ resource "aws_route53_record" "domain_amazonses_verification_record" {
   zone_id = "${var.zone_id}"
   name    = "_amazonses.${var.domain}"
   type    = "TXT"
-  ttl     = "3600"
+  ttl     = "${var.ses_rrl}"
   records = ["${aws_ses_domain_identity.domain.verification_token}"]
 }
 
@@ -12,6 +12,6 @@ resource "aws_route53_record" "domain_amazonses_dkim_record" {
   zone_id = "${var.zone_id}"
   name    = "${element(keys(var.dkim_records), count.index)}"
   type    = "CNAME"
-  ttl     = "300"
+  ttl     = "${var.dkim_ttl}"
   records = ["${element(values(var.dkim_records), count.index)}"]
 }
