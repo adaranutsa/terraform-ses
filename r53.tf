@@ -3,7 +3,7 @@ resource "aws_route53_record" "domain_amazonses_verification_record" {
   zone_id = "${var.zone_id}"
   name    = "_amazonses.${var.domain}"
   type    = "TXT"
-  ttl     = "${var.ses_rrl}"
+  ttl     = "${var.ses_ttl}"
   records = ["${aws_ses_domain_identity.domain.verification_token}"]
 }
 
